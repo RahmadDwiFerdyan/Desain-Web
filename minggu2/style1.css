@@ -1,0 +1,41 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #0d4781, #346494, #7c8ea1);
+    line-height: 1.65;
+    padding-bottom: 1000px;
+}
+
+.container-satu{
+    width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.kolom-utama {
+    order: 2;
+    flex: 3;
+    padding: 10px;
+    margin: 5px;
+    background: url('bunga2.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.sidebar-satu {
+    order: 1;
+    flex: 1;
+}
+
+.sidebar-dua {
+    order: 3;
+    flex: 1;
+    margin-left: 30px;
+    
+}
