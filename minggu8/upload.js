@@ -1,4 +1,19 @@
 $(document).ready(function(){
+    $('#file').change(function(){
+        if (this.files.length > 0) {
+            // Mengaktifkan tombol upload jika file terpilih
+            $('#upload-button').prop('disabled', false).css({
+                'opacity': 1,
+                'cursor': 'pointer'
+            });
+        } else {
+            // Menonaktifkan tombol jika tidak ada file
+            $('#upload-button').prop('disabled', true).css({
+                'opacity': 0.5,
+                'cursor': 'not-allowed'
+            });
+        }
+});
     $('#upload-form').submit(function(e){
         e.preventDefault();
 
@@ -8,7 +23,6 @@ $(document).ready(function(){
             type: 'POST',
             url: 'upload_ajax.php',
             data: formData,
-            cache: false,
             contentType: false,
             processData: false,
             success: function(response){
@@ -20,4 +34,3 @@ $(document).ready(function(){
         });
     });
 });
-
