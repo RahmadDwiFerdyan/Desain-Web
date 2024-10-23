@@ -3,18 +3,15 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     const password = document.getElementById('password').value;
     let valid = true;
 
-    // Reset error messages
     document.getElementById('usernameError').style.display = 'none';
     document.getElementById('passwordError').style.display = 'none';
 
-    // Validate username
     if (username === '') {
         document.getElementById('usernameError').innerText = 'Harus terisi';
         document.getElementById('usernameError').style.display = 'block';
         valid = false;
     }
 
-    // Validate password
     if (password === '') {
         document.getElementById('passwordError').innerText = 'Harus terisi';
         document.getElementById('passwordError').style.display = 'block';
@@ -30,6 +27,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     }
 
     if (!valid) {
-        e.preventDefault(); // Prevent form submission if validation fails
+        e.preventDefault(); 
     }
 });
