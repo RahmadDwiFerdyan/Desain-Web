@@ -43,6 +43,7 @@ if (isset($_POST['check'])) {
     }
 
     if ($member == 'Member') {
+        $diskon = $total*0.1;
         $total -= $total * 0.1;
     }
 
@@ -65,7 +66,7 @@ if (isset($_POST['check'])) {
     <div class="header-title"><img src="title.png" alt="title-head"></div>
         <nav>
             <a href="home.php">Home</a>
-            <a href="cek_harga.php" style="text-decoration: underline"><b>Cek Harga</b></a>
+            <a href="cek_harga.php"><b>Cek Harga</b></a>
             <a href="logout.php">Logout</a>
         </nav>
     </header>
@@ -100,7 +101,14 @@ if (isset($_POST['check'])) {
         </form>
 
         <?php if (!empty($total)): ?>
-            <p>Total Harga: <?php echo number_format($total); ?> IDR</p>
+            <p style="color: red; font-weight: bold; font-size: 20px">
+                Total Harga: <?php echo number_format($total); ?> IDR
+            </p>
+            <?php
+             if(!empty($diskon)) {
+                echo "[Anda mendapat diskon -" . number_format($diskon) . " IDR]<br>";
+             }
+            ?>
             <?php 
             if($kupon){
                 echo "Anda mendapat kupon diskon: GRATIS LAUNDRY 2KG";

@@ -21,7 +21,7 @@ if (!isset($_SESSION['username'])) {
     <header>
         <div class="header-title"><img src="title.png" alt="title-head"></div>
         <nav>
-            <a href="home.php" style="text-decoration: underline"><b>Home</b></a>
+            <a href="home.php"><b>Home</b></a>
             <a href="cek_harga.php">Cek Harga</a>
             <a href="logout.php">Logout</a>
         </nav>
