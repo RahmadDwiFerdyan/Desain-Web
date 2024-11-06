@@ -13,8 +13,7 @@
         <?php
         include 'koneksi.php';
         $no = 1;
-        $query =
-            "SELECT * FROM anggota ORDER BY id DESC";
+        $query = "SELECT * FROM anggota ORDER BY id DESC";
         $sql = $db1->prepare($query);
         $sql->execute();
         $res1 = $sql->get_result();
@@ -26,7 +25,7 @@
                 $jenis_kelamin = ($row['jenis_kelamin'] == 'L') ? 'Laki-Laki' : 'Perempuan';
                 $alamat = $row['alamat'];
                 $no_telp = $row['no_telp'];
-        ?>
+                ?>
                 <tr>
                     <td><?php echo $no++; ?></td>
                     <td><?php echo $nama; ?></td>
@@ -34,9 +33,11 @@
                     <td><?php echo $alamat; ?></td>
                     <td><?php echo $no_telp; ?></td>
                     <td>
-                        <button id="<?php echo $id; ?>" class="btn btn-success btn-sm edit_data"> <i class="fa fa-edit"></i>Edit </button>
+                        <button id="<?php echo $id; ?>" class="btn btn-success btn-sm edit_data"> <i class="fa fa-edit"></i>Edit
+                        </button>
 
-                        <button id="<?php echo $id; ?>" class="btn btn-danger btn-sm hapus_data"> <i class="fa fa-trash"></i>Hapus </button>
+                        <button id="<?php echo $id; ?>" class="btn btn-danger btn-sm hapus_data"> <i
+                                class="fa fa-trash"></i>Hapus </button>
                     </td>
                 </tr>
 
@@ -49,7 +50,7 @@
     </tbody>
 </table>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#example').DataTable();
 
     });
@@ -59,28 +60,44 @@
         document.getElementById("err_alamat").innerHTML = "";
         document.getElementById("err_no_telp").innerHTML = "";
     }
-    $(document).on('click', '.edit_data', function() {
-        $('html, body').animate({scrollTop: 0}, 'slow');
+
+
+    $(document).on('click', '.hapus_data', function () {
+        var id = $(this).attr('id');
+        $.ajax({
+            type: 'POST',
+            url: "hapus_data.php", 
+            data: { id: id },
+            success: function () {
+                $('.data').load("data.php");
+            }, error: function (response) {
+                console.log(response.responseText);
+            }
+        });
+    });
+
+    $(document).on('click', '.edit_data', function () {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
         var id = $(this).attr('id');
         $.ajax({
             type: 'POST',
             url: "get_data.php",
-            data: {id: id},
+            data: { id: id },
             dataType: 'json',
-            success: function(response) {
+            success: function (response) {
                 reset();
-                $('html, body').animate({scrollTop: 30}, 'slow');
+                $('html, body').animate({ scrollTop: 30 }, 'slow');
                 document.getElementById("id").value = response.id;
                 document.getElementById("nama").value = response.nama;
                 document.getElementById("alamat").value = response.alamat;
                 document.getElementById("no_telp").value = response.no_telp;
-                if (response.jenis_kelamin == "L") {    
+                if (response.jenis_kelamin == "L") {
                     document.getElementById("jenkel1").checked = true;
                 } else {
                     document.getElementById("jenkel2").checked = true;
                 }
             },
-            error: function(response) {
+            error: function (response) {
                 console.log(response.responseText);
             }
         });

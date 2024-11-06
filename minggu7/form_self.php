@@ -13,8 +13,7 @@
                 if (empty($_POST["nama"])) {
                     $namaErr = "Nama harus diisi!";
                 } else {
-                    $nama = $_
-                    POST["nama"];
+                    $nama = $_POST["nama"];
                     echo "Data berhasil disimpan";
                 }
             }

@@ -6,7 +6,7 @@ include 'auth.php';
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <!-- Csrf Token -->
     <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
     <!-- Bootstrap -->

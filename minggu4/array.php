@@ -61,13 +61,7 @@ foreach ($daftarNilai[$mataKuliah] as $nilai){
 
 echo "<br><br><br>";
 
-$daftarNilaiMat [
-    ['Alice', 85],
-    ['Bob', 92],
-    ['Charlie', 78],
-    ['David', 64],
-    ['Eva', 90],
-];
+
 
 $jml = count($daftarNilaiMat);
 $totalNilai = 0;
